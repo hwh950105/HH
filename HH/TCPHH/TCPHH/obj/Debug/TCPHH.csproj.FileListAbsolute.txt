@@ -1,0 +1,12 @@
+C:\Users\zap80\source\repos\TCPHH\TCPHH\bin\Debug\TCPHH.dll
+C:\Users\zap80\source\repos\TCPHH\TCPHH\bin\Debug\TCPHH.pdb
+C:\Users\zap80\source\repos\TCPHH\TCPHH\obj\Debug\TCPHH.csproj.AssemblyReference.cache
+C:\Users\zap80\source\repos\TCPHH\TCPHH\obj\Debug\TCPHH.csproj.CoreCompileInputs.cache
+C:\Users\zap80\source\repos\TCPHH\TCPHH\obj\Debug\TCPHH.dll
+C:\Users\zap80\source\repos\TCPHH\TCPHH\obj\Debug\TCPHH.pdb
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\TCPHH\TCPHH\bin\Debug\TCPHH.dll
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\TCPHH\TCPHH\bin\Debug\TCPHH.pdb
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\TCPHH\TCPHH\obj\Debug\TCPHH.csproj.AssemblyReference.cache
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\TCPHH\TCPHH\obj\Debug\TCPHH.csproj.CoreCompileInputs.cache
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\TCPHH\TCPHH\obj\Debug\TCPHH.dll
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\TCPHH\TCPHH\obj\Debug\TCPHH.pdb

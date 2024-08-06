@@ -1,0 +1,49 @@
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\bin\Debug\HH.exe.config
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\bin\Debug\HH.exe
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\bin\Debug\HH.pdb
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\obj\Debug\HH.csproj.AssemblyReference.cache
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\obj\Debug\HH.Properties.Resources.resources
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\obj\Debug\HH.csproj.GenerateResource.cache
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\obj\Debug\HH.csproj.CoreCompileInputs.cache
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\obj\Debug\HH.exe
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\obj\Debug\HH.pdb
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\bin\Debug\ReaLTaiizor.dll
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\bin\Debug\ReaLTaiizor.xml
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\obj\Debug\HH.csproj.Up2Date
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\obj\Debug\HH.FmLogin.resources
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\obj\Debug\HH.Views.FmMain.resources
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\obj\Debug\HH.Views.UFMain.resources
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\obj\Debug\HH.Views.UFmanu1.resources
+C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\HH\obj\Debug\HH.Views.UFTcpClient.resources
+D:\codes\HH\HH\bin\Debug\HH.exe.config
+D:\codes\HH\HH\bin\Debug\HH.exe
+D:\codes\HH\HH\bin\Debug\HH.pdb
+D:\codes\HH\HH\bin\Debug\ReaLTaiizor.dll
+D:\codes\HH\HH\bin\Debug\ReaLTaiizor.xml
+D:\codes\HH\HH\obj\Debug\HH.csproj.AssemblyReference.cache
+D:\codes\HH\HH\obj\Debug\HH.FmLogin.resources
+D:\codes\HH\HH\obj\Debug\HH.Properties.Resources.resources
+D:\codes\HH\HH\obj\Debug\HH.Views.FmMain.resources
+D:\codes\HH\HH\obj\Debug\HH.Views.UFMain.resources
+D:\codes\HH\HH\obj\Debug\HH.Views.UFmanu1.resources
+D:\codes\HH\HH\obj\Debug\HH.Views.UFTcpClient.resources
+D:\codes\HH\HH\obj\Debug\HH.csproj.GenerateResource.cache
+D:\codes\HH\HH\obj\Debug\HH.csproj.CoreCompileInputs.cache
+D:\codes\HH\HH\obj\Debug\HH.csproj.Up2Date
+D:\codes\HH\HH\obj\Debug\HH.exe
+D:\codes\HH\HH\obj\Debug\HH.pdb
+D:\codes\HH\HH\bin\Debug\Newtonsoft.Json.dll
+D:\codes\HH\HH\bin\Debug\Newtonsoft.Json.xml
+D:\codes\HH\HH\obj\Debug\HH.Views.UserControls.UFJsonConfig.resources
+D:\codes\HH\HH\obj\Debug\HH.Views.UserControls.UFiniConfig.resources
+D:\codes\HH\HH\bin\Debug\EntityFramework.dll
+D:\codes\HH\HH\bin\Debug\EntityFramework.SqlServer.dll
+D:\codes\HH\HH\bin\Debug\System.Data.SQLite.dll
+D:\codes\HH\HH\bin\Debug\System.Data.SQLite.EF6.dll
+D:\codes\HH\HH\bin\Debug\System.Data.SQLite.Linq.dll
+D:\codes\HH\HH\bin\Debug\EntityFramework.xml
+D:\codes\HH\HH\bin\Debug\EntityFramework.SqlServer.xml
+D:\codes\HH\HH\bin\Debug\System.Data.SQLite.xml
+D:\codes\HH\HH\bin\Debug\log4net.dll
+D:\codes\HH\HH\bin\Debug\log4net.xml
+D:\codes\HH\HH\bin\Debug\log4net.config
