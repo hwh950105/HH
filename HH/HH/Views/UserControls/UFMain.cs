@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using static DataGridViewExtensions;
+using Button = ReaLTaiizor.Controls.Button;
 
 namespace HH.Views
 {
@@ -18,6 +19,7 @@ namespace HH.Views
         public FmMainController FmMainCont { get; set; }
         private string iniFilePath = "path_to_ini_file.ini";
         private FmMain fmMain;
+        private TextBox searchTextBox; // 검색어 입력 TextBox
 
         public class TB_TEST_MODEL
         {
@@ -32,6 +34,7 @@ namespace HH.Views
             InitializeComponent();
             poisonDataGridView1.GridHwhSetting();
             InitializeDataGridView();
+            InitializeButtons();
         }
 
         private void InitializeDataGridView()
@@ -46,7 +49,56 @@ namespace HH.Views
             poisonDataGridView1.SetCustomHeaders(columnSettings);
             ReadColumnWidths();
 
+            var people = new List<TB_TEST_MODEL>();
+
+            using (SQLiteDbHelper DB = new SQLiteDbHelper())
+            {
+                people = DB.ExecuteList<TB_TEST_MODEL>("select * from TB_TEST");
+            }
+
+            poisonDataGridView1.SetBindDataToHeaders(people);
+
             poisonDataGridView1.ColumnWidthChanged += PoisonDataGridView1_ColumnWidthChanged;
+        }
+
+        private void InitializeButtons()
+        {
+            // 검색어 입력 TextBox 추가
+            searchTextBox = new TextBox
+            {
+                Dock = DockStyle.Fill
+            };
+            tableLayoutPanel2.RowCount++;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            tableLayoutPanel2.Controls.Add(searchTextBox, 0, tableLayoutPanel2.RowCount - 1);
+
+            var buttons = new List<(string Text, EventHandler Handler)>
+            {
+                ("검색 하이라이트", materialButton1_Click),
+                ("셀 폰트 설정", materialButton4_Click),
+                ("체크된 행 보기", materialButton5_Click),
+                ("체크박스 토글", materialButton6_Click),
+                ("셀 색상 설정", materialButton7_Click),
+                ("행 색상 설정", materialButton8_Click),
+                ("행 폰트 설정", materialButton9_Click),
+                ("자동 컬럼 크기", materialButton10_Click),
+                ("자동 행 크기", materialButton11_Click),
+                ("체크박스 컬럼 추가", materialButton12_Click),
+                ("초기화", materialButtonReset_Click) 
+            };
+
+            foreach (var (text, handler) in buttons)
+            {
+                var button = new Button
+                {
+                    Text = text,
+                    Dock = DockStyle.Fill
+                };
+                button.Click += handler;
+                tableLayoutPanel2.RowCount++;
+                tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                tableLayoutPanel2.Controls.Add(button, 0, tableLayoutPanel2.RowCount - 1);
+            }
         }
 
         private void PoisonDataGridView1_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
@@ -56,24 +108,8 @@ namespace HH.Views
 
         private void materialButton1_Click(object sender, EventArgs e)
         {
-            var people = new List<TB_TEST_MODEL>();
-
-            using (SQLiteDbHelper DB = new SQLiteDbHelper())
-            {
-                people = DB.ExecuteList<TB_TEST_MODEL>("select * from TB_TEST");
-            }
-
-            poisonDataGridView1.SetBindDataToHeaders(people);
-        }
-
-        private void materialButton7_Click(object sender, EventArgs e)
-        {
-            poisonDataGridView1.EnableEditMode();
-        }
-
-        private void materialButton5_Click(object sender, EventArgs e)
-        {
-            poisonDataGridView1.EnableDeleteMode();
+            // 검색어를 포함하는 셀을 하이라이트
+            poisonDataGridView1.SearchAndHighlight(searchTextBox.Text, Color.LightGreen);
         }
 
         private void materialButton2_Click(object sender, EventArgs e)
@@ -124,27 +160,6 @@ namespace HH.Views
             }
         }
 
-        private void poisonDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // LoginModel loginModel = poisonDataGridView1.GetSelectedRowData<LoginModel>();
-            // Debug.WriteLine($"Id: {loginModel.index}, Name: {loginModel.id}, Age: {loginModel.password}");
-        }
-
-        int cellClickindex = 0;
-
-        private void poisonDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            TB_TEST_MODEL loginModel = poisonDataGridView1.GetSelectedRowData<TB_TEST_MODEL>();
-
-            if (loginModel != null)
-            {
-                metroTextBox1.Text = loginModel.title;
-                richTextBox1.Text = loginModel.content;
-                cellClickindex = loginModel.index;
-                Debug.WriteLine($"Id: {loginModel.index}, Name: {loginModel.title}, Age: {loginModel.content}");
-            }
-        }
-
         private void materialButton3_Click(object sender, EventArgs e)
         {
             var deletedData = poisonDataGridView1.GetDeletedRows<TB_TEST_MODEL>();
@@ -156,29 +171,76 @@ namespace HH.Views
 
         private void materialButton4_Click(object sender, EventArgs e)
         {
-            SaveColumnWidths();
+            // 특정 조건에 맞는 셀의 글꼴을 변경
+            poisonDataGridView1.SetCellFont(cell => cell.Value != null && cell.Value.ToString().Contains(searchTextBox.Text), new Font("Arial", 12, FontStyle.Bold));
+        }
+
+        private void materialButton5_Click(object sender, EventArgs e)
+        {
+            // 체크박스 컬럼에서 체크된 행을 가져와서 출력
+            var checkedRows = poisonDataGridView1.GetCheckedRows<TB_TEST_MODEL>("CheckBoxColumn");
+            foreach (var row in checkedRows)
+            {
+                Debug.WriteLine($"Checked Row: Id: {row.index}, Name: {row.title}, Age: {row.content}");
+            }
         }
 
         private void materialButton6_Click(object sender, EventArgs e)
         {
-            try
-            {
-                using (SQLiteDbHelper DB = new SQLiteDbHelper())
-                {
-                    string Qruey = $"update TB_TEST set title = '{metroTextBox1.Text}' , content = '{richTextBox1.Text}'  where [index] = {cellClickindex}";
-                    DB.ExecuteNonQuery(Qruey);
-                    poisonDataGridView1.SetBindData(DB.ExecuteList<TB_TEST_MODEL>("select * from TB_TEST"));
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
+            // 체크박스 컬럼 토글
+            poisonDataGridView1.ToggleCheckBoxColumn("CheckBoxColumn");
         }
 
-        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
+        private void materialButton7_Click(object sender, EventArgs e)
         {
+            // 특정 조건에 맞는 셀의 색상을 변경
+            poisonDataGridView1.SetCellColor(cell => cell.Value != null && cell.Value.ToString().Contains(searchTextBox.Text), Color.Yellow);
+        }
 
+        private void materialButton8_Click(object sender, EventArgs e)
+        {
+            // 특정 조건에 맞는 행의 색상을 변경
+            poisonDataGridView1.SetRowColor(row => row.Cells["title"].Value != null && row.Cells["title"].Value.ToString().Contains(searchTextBox.Text), Color.LightBlue);
+        }
+
+        private void materialButton9_Click(object sender, EventArgs e)
+        {
+            // 특정 조건에 맞는 행의 글꼴을 변경
+            poisonDataGridView1.SetRowFont(row => row.Cells["title"].Value != null && row.Cells["title"].Value.ToString().Contains(searchTextBox.Text), new Font("Arial", 12, FontStyle.Italic));
+        }
+
+        private void materialButton10_Click(object sender, EventArgs e)
+        {
+            // 컬럼 자동 크기 조정
+            poisonDataGridView1.AutoSizeColumns();
+        }
+
+        private void materialButton11_Click(object sender, EventArgs e)
+        {
+            // 행 자동 크기 조정
+            poisonDataGridView1.AutoSizeRows();
+        }
+
+        private void materialButton12_Click(object sender, EventArgs e)
+        {
+            // 체크박스 컬럼 추가
+
+            poisonDataGridView1.ReadOnly = false;
+
+            poisonDataGridView1.AddCheckBoxColumn("CheckBoxColumn", " ");
+        }
+
+        private void materialButtonReset_Click(object sender, EventArgs e)
+        {
+            ResetDataGridView(); 
+            InitializeDataGridView();
+        }
+
+        private void ResetDataGridView()
+        {
+            poisonDataGridView1.DataSource = null;
+            poisonDataGridView1.Rows.Clear();
+            poisonDataGridView1.Columns.Clear();
         }
 
         private void SaveColumnWidths()
@@ -189,6 +251,22 @@ namespace HH.Views
         private void ReadColumnWidths()
         {
             poisonDataGridView1.LoadColumnWidths(iniFilePath, "DataGridViewColumnWidths");
+        }
+
+        private void poisonDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                var grid = sender as DataGridView;
+                if (grid.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)
+                {
+                    var cell = grid[e.ColumnIndex, e.RowIndex] as DataGridViewCheckBoxCell;
+                    if (cell != null)
+                    {
+                        cell.Value = !(bool)(cell.Value ?? false); 
+                    }
+                }
+            }
         }
     }
 }

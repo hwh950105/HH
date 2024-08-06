@@ -364,24 +364,19 @@ public static class DataGridViewExtensions
     /// </summary>
     public static void AddCheckBoxColumn(this DataGridView grid, string columnName, string headerText)
     {
-        if (grid == null)
+        if (!grid.Columns.Contains(columnName))
         {
-            MessageBox.Show("그리드가 null입니다.");
-            return;
-        }
-
-        if (grid.Columns[columnName] == null)
-        {
-            DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn
+            var checkBoxColumn = new DataGridViewCheckBoxColumn
             {
                 Name = columnName,
                 HeaderText = headerText,
-                Width = 50
+                Width = 50,
+                ReadOnly = false
             };
-
-            grid.Columns.Add(checkBoxColumn);
+            grid.Columns.Insert(0, checkBoxColumn);
         }
     }
+
 
     /// <summary>
     /// 체크박스 컬럼의 선택 상태를 토글하는 메서드
