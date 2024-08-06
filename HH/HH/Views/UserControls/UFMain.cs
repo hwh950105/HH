@@ -9,25 +9,49 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using static DataGridViewExtensions;
 
 namespace HH.Views
 {
     public partial class UFMain : UserControl
     {
         public FmMainController FmMainCont { get; set; }
-
+        private string iniFilePath = "path_to_ini_file.ini";
         private FmMain fmMain;
+
+        public class TB_TEST_MODEL
+        {
+            public int index { get; set; }
+            public string title { get; set; }
+            public string content { get; set; }
+        }
 
         public UFMain(FmMain main)
         {
             fmMain = main;
             InitializeComponent();
             poisonDataGridView1.GridHwhSetting();
+            InitializeDataGridView();
+        }
 
-            var headers = new List<string> { "index", "title", "content" };
-            poisonDataGridView1.SetHeaders(headers);
+        private void InitializeDataGridView()
+        {
+            var columnSettings = new List<DataGridViewColumnSetting>
+            {
+                new DataGridViewColumnSetting { Name = "index", Title = "INDEX", Width = 120, ContentAlign = ContentAlign.Center },
+                new DataGridViewColumnSetting { Name = "title", Title = "TITLE", Width = 210, ContentAlign = ContentAlign.Left },
+                new DataGridViewColumnSetting { Name = "content", Title = "CONTENT", Width = 200, ContentAlign = ContentAlign.Right }
+            };
 
+            poisonDataGridView1.SetCustomHeaders(columnSettings);
+            ReadColumnWidths();
 
+            poisonDataGridView1.ColumnWidthChanged += PoisonDataGridView1_ColumnWidthChanged;
+        }
+
+        private void PoisonDataGridView1_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            SaveColumnWidths();
         }
 
         private void materialButton1_Click(object sender, EventArgs e)
@@ -41,6 +65,7 @@ namespace HH.Views
 
             poisonDataGridView1.SetBindDataToHeaders(people);
         }
+
         private void materialButton7_Click(object sender, EventArgs e)
         {
             poisonDataGridView1.EnableEditMode();
@@ -53,8 +78,6 @@ namespace HH.Views
 
         private void materialButton2_Click(object sender, EventArgs e)
         {
-
-
             var modifiedData = poisonDataGridView1.GeteditRows<TB_TEST_MODEL>();
 
             using (SQLiteDbHelper DB = new SQLiteDbHelper())
@@ -101,29 +124,25 @@ namespace HH.Views
             }
         }
 
-
-
-
         private void poisonDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-          //  LoginModel loginModel = poisonDataGridView1.GetSelectedRowData<LoginModel>();
-            //Debug.WriteLine($"Id: {loginModel.index}, Name: {loginModel.id}, Age: {loginModel.password}");
-
+            // LoginModel loginModel = poisonDataGridView1.GetSelectedRowData<LoginModel>();
+            // Debug.WriteLine($"Id: {loginModel.index}, Name: {loginModel.id}, Age: {loginModel.password}");
         }
 
         int cellClickindex = 0;
+
         private void poisonDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             TB_TEST_MODEL loginModel = poisonDataGridView1.GetSelectedRowData<TB_TEST_MODEL>();
 
-            if (loginModel != null) {
+            if (loginModel != null)
+            {
                 metroTextBox1.Text = loginModel.title;
                 richTextBox1.Text = loginModel.content;
                 cellClickindex = loginModel.index;
                 Debug.WriteLine($"Id: {loginModel.index}, Name: {loginModel.title}, Age: {loginModel.content}");
             }
-        
         }
 
         private void materialButton3_Click(object sender, EventArgs e)
@@ -137,18 +156,8 @@ namespace HH.Views
 
         private void materialButton4_Click(object sender, EventArgs e)
         {
- 
+            SaveColumnWidths();
         }
-
-        public class TB_TEST_MODEL
-        {
-            public int index { get; set; }
-            public string title { get; set; }
-            public string content { get; set; }
-   
-        }
-
-
 
         private void materialButton6_Click(object sender, EventArgs e)
         {
@@ -156,22 +165,30 @@ namespace HH.Views
             {
                 using (SQLiteDbHelper DB = new SQLiteDbHelper())
                 {
-
                     string Qruey = $"update TB_TEST set title = '{metroTextBox1.Text}' , content = '{richTextBox1.Text}'  where [index] = {cellClickindex}";
                     DB.ExecuteNonQuery(Qruey);
                     poisonDataGridView1.SetBindData(DB.ExecuteList<TB_TEST_MODEL>("select * from TB_TEST"));
                 }
             }
-            catch (Exception ex) 
-            { 
-                   Debug.WriteLine (ex);
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
             }
-       
         }
 
         private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void SaveColumnWidths()
+        {
+            poisonDataGridView1.SaveColumnWidths(iniFilePath, "DataGridViewColumnWidths");
+        }
+
+        private void ReadColumnWidths()
+        {
+            poisonDataGridView1.LoadColumnWidths(iniFilePath, "DataGridViewColumnWidths");
         }
     }
 }
