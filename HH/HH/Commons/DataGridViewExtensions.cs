@@ -245,6 +245,7 @@ public static class DataGridViewExtensions
 
         grid.AutoGenerateColumns = false; // 자동 생성된 컬럼 비활성화
     }
+
     /// <summary>
     /// List<T>를 받아서 그리드에 데이터를 바인딩하는 확장 메서드
     /// </summary>

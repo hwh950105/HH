@@ -249,6 +249,16 @@ namespace HH.Commons
             return null;
         }
 
+        public static object GetSelectedRowData(this DataGridView grid) 
+        { 
+            if (grid.SelectedRows.Count > 0)
+            {
+                return grid.SelectedRows[0].DataBoundItem;
+            }
+            return null;
+        }
+
+
 
         /// <summary>
         /// 삭제 모드일 때 클릭한 행을 삭제하는 메서드

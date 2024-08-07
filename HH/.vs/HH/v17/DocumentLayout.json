@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\hh\\views\\usercontrols\\ufmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|c:\\users\\ghkdd\\onedrive\\\uBB38\uC11C\\hh\\hh\\hh\\views\\usercontrols\\ufmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|solutionrelative:hh\\views\\usercontrols\\ufmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,15 +11,19 @@
       "RelativeMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|solutionrelative:hh\\commons\\datagridviewextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|HH||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\hh\\commons\\datagridviewextensions2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|solutionrelative:hh\\commons\\datagridviewextensions2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|c:\\users\\ghkdd\\onedrive\\\uBB38\uC11C\\hh\\hh\\hh\\commons\\datagridviewextensions2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|solutionrelative:hh\\commons\\datagridviewextensions2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\hh\\views\\fmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|solutionrelative:hh\\views\\fmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\hh\\views\\usercontrols\\ufmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|solutionrelative:hh\\views\\usercontrols\\ufmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|HH||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\hh\\commons\\listviewextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,10 +58,6 @@
       "RelativeMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|solutionrelative:hh\\views\\fmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\hh\\views\\fmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|solutionrelative:hh\\views\\fmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\hh\\views\\fmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|solutionrelative:hh\\views\\fmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
@@ -76,9 +76,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\hh\\views\\usercontrols\\ufjsonconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|solutionrelative:hh\\views\\usercontrols\\ufjsonconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4B49134B-C95E-4BA5-9A54-4622CE5DFC3E}|HH\\HH.csproj|c:\\users\\ghkdd\\onedrive\\\uBB38\uC11C\\hh\\hh\\hh\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -87,12 +84,12 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 847,
-          "SelectedChildIndex": 13,
+          "DockedWidth": 612,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "DbCall.cs",
               "DocumentMoniker": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Commons\\DbCall.cs",
               "RelativeDocumentMoniker": "HH\\Commons\\DbCall.cs",
@@ -153,20 +150,32 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UFMain.cs [\uB514\uC790\uC778]",
+              "DocumentMoniker": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Views\\UserControls\\UFMain.cs",
+              "RelativeDocumentMoniker": "HH\\Views\\UserControls\\UFMain.cs",
+              "ToolTip": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Views\\UserControls\\UFMain.cs [\uB514\uC790\uC778]",
+              "RelativeToolTip": "HH\\Views\\UserControls\\UFMain.cs [\uB514\uC790\uC778]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T14:53:50.618Z",
+              "EditorCaption": " [\uB514\uC790\uC778]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "UFMain.cs",
               "DocumentMoniker": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Views\\UserControls\\UFMain.cs",
               "RelativeDocumentMoniker": "HH\\Views\\UserControls\\UFMain.cs",
               "ToolTip": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Views\\UserControls\\UFMain.cs",
               "RelativeToolTip": "HH\\Views\\UserControls\\UFMain.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAA8wEEAAAANAAAA",
+              "ViewState": "AQIAABUBAAAAAAAAAAAQwBcBAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-03T08:02:27.5Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "FmMainController.cs",
               "DocumentMoniker": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Views\\FmMainController.cs",
               "RelativeDocumentMoniker": "HH\\Views\\FmMainController.cs",
@@ -178,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "FmMain.cs",
               "DocumentMoniker": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Views\\FmMain.cs",
               "RelativeDocumentMoniker": "HH\\Views\\FmMain.cs",
@@ -190,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ListViewExtensions.cs",
               "DocumentMoniker": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Commons\\ListViewExtensions.cs",
               "RelativeDocumentMoniker": "HH\\Commons\\ListViewExtensions.cs",
@@ -202,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "LoginModel.cs",
               "DocumentMoniker": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Models\\LoginModel.cs",
               "RelativeDocumentMoniker": "HH\\Models\\LoginModel.cs",
@@ -214,7 +223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "IniFile.cs",
               "DocumentMoniker": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Commons\\IniFile.cs",
               "RelativeDocumentMoniker": "HH\\Commons\\IniFile.cs",
@@ -226,7 +235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "UFMain.Designer.cs",
               "DocumentMoniker": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Views\\UserControls\\UFMain.Designer.cs",
               "RelativeDocumentMoniker": "HH\\Views\\UserControls\\UFMain.Designer.cs",
@@ -234,13 +243,12 @@
               "RelativeToolTip": "HH\\Views\\UserControls\\UFMain.Designer.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAANQBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T08:03:14.806Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T08:03:14.806Z"
             }
           ]
         },
         {
-          "DockedWidth": 131,
+          "DockedWidth": 366,
           "SelectedChildIndex": 0,
           "Children": [
             {
@@ -251,47 +259,34 @@
               "RelativeDocumentMoniker": "HH\\Commons\\DataGridViewExtensions.cs",
               "ToolTip": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Commons\\DataGridViewExtensions.cs",
               "RelativeToolTip": "HH\\Commons\\DataGridViewExtensions.cs",
-              "ViewState": "AQIAADIBAAAAAAAAAAAhwDkBAAAkAAAA",
+              "ViewState": "AQIAACYAAAAAAAAAAAAqwKYAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-03T07:14:20.018Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "HH",
               "DocumentMoniker": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\HH.csproj",
               "RelativeDocumentMoniker": "HH\\HH.csproj",
               "ToolTip": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\HH.csproj",
               "RelativeToolTip": "HH\\HH.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-08-07T12:54:37.983Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-07T12:54:37.983Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "DataGridViewExtensions2.cs",
               "DocumentMoniker": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Commons\\DataGridViewExtensions2.cs",
               "RelativeDocumentMoniker": "HH\\Commons\\DataGridViewExtensions2.cs",
               "ToolTip": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Commons\\DataGridViewExtensions2.cs",
               "RelativeToolTip": "HH\\Commons\\DataGridViewExtensions2.cs",
-              "ViewState": "AQIAAAEBAAAAAAAAAAAjwPoAAAAAAAAA",
+              "ViewState": "AQIAAD8BAAAAAAAAAAAcwP8AAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-06T12:45:39.495Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UFMain.cs [\uB514\uC790\uC778]",
-              "DocumentMoniker": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Views\\UserControls\\UFMain.cs",
-              "RelativeDocumentMoniker": "HH\\Views\\UserControls\\UFMain.cs",
-              "ToolTip": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Views\\UserControls\\UFMain.cs [\uB514\uC790\uC778]",
-              "RelativeToolTip": "HH\\Views\\UserControls\\UFMain.cs [\uB514\uC790\uC778]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T11:34:38.648Z",
-              "EditorCaption": " [\uB514\uC790\uC778]"
             },
             {
               "$type": "Document",
@@ -305,17 +300,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 3,
               "Title": "FmLogin.cs [\uB514\uC790\uC778]",
               "DocumentMoniker": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Views\\FmLogin.cs",
               "RelativeDocumentMoniker": "HH\\Views\\FmLogin.cs",
-              "ToolTip": "D:\\codes\\HH\\HH\\Views\\FmLogin.cs [\uB514\uC790\uC778]",
+              "ToolTip": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Views\\FmLogin.cs [\uB514\uC790\uC778]",
+              "RelativeToolTip": "HH\\Views\\FmLogin.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T14:47:08.135Z"
+              "WhenOpened": "2024-08-04T14:47:08.135Z",
+              "EditorCaption": " [\uB514\uC790\uC778]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "FmLogin.cs",
               "DocumentMoniker": "C:\\Users\\ghkdd\\OneDrive\\\uBB38\uC11C\\HH\\HH\\HH\\Views\\FmLogin.cs",
               "RelativeDocumentMoniker": "HH\\Views\\FmLogin.cs",
@@ -323,7 +320,8 @@
               "RelativeToolTip": "HH\\Views\\FmLogin.cs",
               "ViewState": "AQIAAFYAAAAAAAAAAAArwHwAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T09:31:35.909Z"
+              "WhenOpened": "2024-08-04T09:31:35.909Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

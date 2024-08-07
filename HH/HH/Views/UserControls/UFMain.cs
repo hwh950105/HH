@@ -289,21 +289,37 @@ namespace HH.Views
         {
             poisonDataGridView1.LoadColumnWidths(iniFilePath, "DataGridViewColumnWidths");
         }
-
         private void poisonDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                var grid = sender as DataGridView;
-                if (grid.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)
+                var row = poisonDataGridView1.Rows[e.RowIndex];
+
+                // 일반 셀 데이터 출력
+                if (row.DataBoundItem is TB_TEST_MODEL asd)
                 {
-                    var cell = grid[e.ColumnIndex, e.RowIndex] as DataGridViewCheckBoxCell;
-                    if (cell != null)
+                    Debug.WriteLine($"Selected Data: Id: {asd.index}, Title: {asd.title}, Content: {asd.content}");
+                }
+
+                // 선택한 행의 모든 셀 데이터 출력
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell is DataGridViewComboBoxCell comboBoxCell)
                     {
-                        cell.Value = !(bool)(cell.Value ?? false);
+                        Debug.WriteLine($"ComboBox Cell [{cell.ColumnIndex}]: {comboBoxCell.Value}");
+                    }
+                    else if (cell is DataGridViewCheckBoxCell checkBoxCell)
+                    {
+                        Debug.WriteLine($"CheckBox Cell [{cell.ColumnIndex}]: {checkBoxCell.Value}");
+                    }
+                    else
+                    {
+                        Debug.WriteLine($"Cell [{cell.ColumnIndex}]: {cell.Value}");
                     }
                 }
             }
         }
+
+
     }
 }
