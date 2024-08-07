@@ -58,6 +58,63 @@ public static class DataGridViewExtensions
             iniFile.Write(section, column.Name, column.Width.ToString());
         }
     }
+    /// <summary>
+    /// 지정된 행 수만큼 빈 행을 추가
+    /// </summary>
+    /// <param name="grid">설정할 DataGridView</param>
+    /// <param name="rowCount">행 수</param>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
+
+    public static void AddEmptyRows(this DataGridView grid, int rowCount)
+    {
+        if (grid == null)
+        {
+            throw new ArgumentNullException(nameof(grid), "The DataGridView cannot be null.");
+        }
+
+        if (rowCount < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(rowCount), "The number of rows must be a non-negative integer.");
+        }
+
+        // Add the specified number of empty rows
+        for (int i = 0; i < rowCount; i++)
+        {
+            grid.Rows.Add();
+        }
+    }
+    /// <summary>
+    /// 행수 고정
+    /// </summary>
+    /// <param name="grid">설정할 DataGridView</param>
+    /// <param name="rowCount">행 수</param>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
+
+    public static void EnsureRowCount(this DataGridView grid, int rowCount)
+    {
+        if (grid == null)
+        {
+            throw new ArgumentNullException(nameof(grid), "The DataGridView cannot be null.");
+        }
+
+        if (rowCount < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(rowCount), "The number of rows must be a non-negative integer.");
+        }
+
+        // 현재 행 수를 확인하고 부족한 경우 빈 행을 추가합니다.
+        int currentRowCount = grid.Rows.Count;
+        if (currentRowCount < rowCount)
+        {
+            for (int i = currentRowCount; i < rowCount; i++)
+            {
+                grid.Rows.Add();
+            }
+        }
+    }
+
 
     /// <summary>
     /// INI 파일에서 컬럼 너비를 불러오는 메서드
@@ -86,53 +143,108 @@ public static class DataGridViewExtensions
     /// <param name="headers">설정할 해더 리스트</param>
     public static void SetCustomHeaders(this DataGridView grid, List<DataGridViewColumnSetting> columnSettings)
     {
-        if (grid == null)
+        if (grid == null || columnSettings == null || columnSettings.Count == 0)
         {
-            MessageBox.Show("그리드가 null입니다.");
+            MessageBox.Show("그리드 또는 컬럼 설정이 null이거나 비어 있습니다.");
             return;
         }
 
-        if (columnSettings == null || columnSettings.Count == 0)
-        {
-            MessageBox.Show("컬럼 설정 리스트가 null이거나 비어 있습니다.");
-            return;
-        }
-
-        // 지정된 해더로 그리드의 컬럼 설정
         grid.Columns.Clear();
+        grid.Tag = columnSettings; // columnSettings를 grid의 Tag 속성에 저장
+
         foreach (var setting in columnSettings)
         {
-            var column = new DataGridViewTextBoxColumn
-            {
-                HeaderText = setting.Title,
-                DataPropertyName = setting.Name,
-                Name = setting.Name,
-                Width = setting.Width,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.None // 컬럼의 AutoSizeMode를 None으로 설정
-            };
+            DataGridViewColumn column = null;
 
-            // 정렬 설정
-            switch (setting.ContentAlign)
+            switch (setting.ColumnType)
             {
-                case ContentAlign.Center:
-                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                case ColumnType.TextBox:
+                    column = new DataGridViewTextBoxColumn
+                    {
+                        Name = setting.Name,
+                        HeaderText = setting.Title,
+                        Width = setting.Width,
+                        DataPropertyName = setting.Name,
+                        ReadOnly = false
+                    };
                     break;
-                case ContentAlign.Right:
-                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                case ColumnType.ComboBox:
+                    var comboBoxColumn = new DataGridViewComboBoxColumn
+                    {
+                        Name = setting.Name,
+                        HeaderText = setting.Title,
+                        Width = setting.Width,
+                        DataPropertyName = setting.Name,
+                        ReadOnly = false
+                    };
+
+                    if (setting.ComboBoxItems != null)
+                    {
+                        comboBoxColumn.Items.AddRange(setting.ComboBoxItems.ToArray());
+                    }
+
+                    column = comboBoxColumn;
                     break;
-                case ContentAlign.Left:
+
+                case ColumnType.Button:
+                    column = new DataGridViewButtonColumn
+                    {
+                        Name = setting.Name,
+                        HeaderText = setting.Title,
+                        Width = setting.Width,
+                        DataPropertyName = setting.Name,
+                        Text = "Click",
+                        UseColumnTextForButtonValue = true,
+                        ReadOnly = false
+                    };
+                    break;
+
+                case ColumnType.CheckBox:
+                    column = new DataGridViewCheckBoxColumn
+                    {
+                        Name = setting.Name,
+                        HeaderText = setting.Title,
+                        Width = setting.Width,
+                        DataPropertyName = setting.Name,
+                        ReadOnly = false
+                    };
+                    break;
+
                 default:
-                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    column = new DataGridViewTextBoxColumn
+                    {
+                        Name = setting.Name,
+                        HeaderText = setting.Title,
+                        Width = setting.Width,
+                        DataPropertyName = setting.Name,
+                        ReadOnly = true
+                    };
                     break;
             }
 
-            grid.Columns.Add(column);
+            if (column != null)
+            {
+                // Align content
+                switch (setting.ContentAlign)
+                {
+                    case ContentAlign.Left:
+                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                        break;
+                    case ContentAlign.Center:
+                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        break;
+                    case ContentAlign.Right:
+                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        break;
+                }
+
+                grid.Columns.Add(column);
+            }
         }
 
         grid.AutoGenerateColumns = false; // 자동 생성된 컬럼 비활성화
-        grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // 그리드 전체의 AutoSizeColumnsMode를 Fill로 설정
     }
-
     /// <summary>
     /// List<T>를 받아서 그리드에 데이터를 바인딩하는 확장 메서드
     /// </summary>
@@ -173,7 +285,8 @@ public static class DataGridViewExtensions
     /// <typeparam name="T">데이터 타입</typeparam>
     /// <param name="grid">설정할 DataGridView</param>
     /// <param name="data">바인딩할 데이터 리스트</param>
-    public static void SetBindDataToHeaders<T>(this DataGridView grid, List<T> data) where T : class
+
+    public static void SetBindDataToHeaders<T>(this DataGridView grid, List<T> data, int rowCount = 0) where T : class
     {
         if (grid == null)
         {
@@ -181,9 +294,16 @@ public static class DataGridViewExtensions
             return;
         }
 
-        if (data == null || data.Count == 0)
+        if (data == null)
         {
-            MessageBox.Show("데이터가 null이거나 비어 있습니다.");
+            MessageBox.Show("데이터가 null입니다.");
+            data = new List<T>();
+        }
+
+        var columnSettings = grid.Tag as List<DataGridViewColumnSetting>;
+        if (columnSettings == null)
+        {
+            MessageBox.Show("컬럼 설정이 null입니다.");
             return;
         }
 
@@ -196,16 +316,39 @@ public static class DataGridViewExtensions
 
         grid.DataSource = bindingSource;
 
+        // 빈 행 추가
+        if (rowCount > data.Count)
+        {
+            for (int i = data.Count; i < rowCount; i++)
+            {
+                bindingList.Add(Activator.CreateInstance<T>());
+            }
+        }
+
         // 기본 설정
-        grid.ReadOnly = true;
         grid.AllowUserToAddRows = false;
         grid.AllowUserToDeleteRows = false;
-        grid.EditMode = DataGridViewEditMode.EditProgrammatically;
+        grid.EditMode = DataGridViewEditMode.EditOnEnter;
 
         grid.Dock = DockStyle.Fill;
         grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         grid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         grid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+
+        // 컬럼 타입에 따라 ReadOnly 설정
+        foreach (DataGridViewColumn column in grid.Columns)
+        {
+            var setting = columnSettings.FirstOrDefault(s => s.Name == column.Name);
+            if (setting != null && ( setting.ColumnType == ColumnType.ComboBox ||
+                                    setting.ColumnType == ColumnType.Button || setting.ColumnType == ColumnType.CheckBox))
+            {
+                column.ReadOnly = false;
+            }
+            else
+            {
+                column.ReadOnly = true;
+            }
+        }
     }
 
     /// <summary>
@@ -362,21 +505,124 @@ public static class DataGridViewExtensions
     /// <summary>
     /// 체크박스 컬럼을 추가하는 메서드
     /// </summary>
-    public static void AddCheckBoxColumn(this DataGridView grid, string columnName, string headerText)
-    {
-        if (!grid.Columns.Contains(columnName))
+   
+        public static void AddCheckBoxColumn(this DataGridView grid, string columnName, string headerText, int position = 0)
         {
-            var checkBoxColumn = new DataGridViewCheckBoxColumn
+            if (!grid.Columns.Contains(columnName))
             {
-                Name = columnName,
-                HeaderText = headerText,
-                Width = 50,
-                ReadOnly = false
-            };
-            grid.Columns.Insert(0, checkBoxColumn);
-        }
-    }
+                var checkBoxColumn = new DataGridViewCheckBoxColumn
+                {
+                    Name = columnName,
+                    HeaderText = headerText,
+                    Width = 30,
+                    MinimumWidth = 30,
+                    ReadOnly = false,
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                };
 
+                if (position < 0 || position > grid.Columns.Count)
+                {
+                    position = 0;
+                }
+
+                grid.Columns.Insert(position, checkBoxColumn);
+            }
+        }
+
+        public static void AddComboBoxColumn(this DataGridView grid, string columnName, string headerText, List<string> items, int position = 0)
+        {
+            if (!grid.Columns.Contains(columnName))
+            {
+                var comboBoxColumn = new DataGridViewComboBoxColumn
+                {
+                    Name = columnName,
+                    HeaderText = headerText,
+                    DataSource = items,
+                    Width = 100,
+                    MinimumWidth = 100,
+                    ReadOnly = false,
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                };
+
+                if (position < 0 || position > grid.Columns.Count)
+                {
+                    position = 0;
+                }
+
+                grid.Columns.Insert(position, comboBoxColumn);
+            }
+        }
+
+        public static void AddTextBoxColumn(this DataGridView grid, string columnName, string headerText, int position = 0)
+        {
+            if (!grid.Columns.Contains(columnName))
+            {
+                var textBoxColumn = new DataGridViewTextBoxColumn
+                {
+                    Name = columnName,
+                    HeaderText = headerText,
+                    Width = 100,
+                    MinimumWidth = 100,
+                    ReadOnly = false,
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                };
+
+                if (position < 0 || position > grid.Columns.Count)
+                {
+                    position = 0;
+                }
+
+                grid.Columns.Insert(position, textBoxColumn);
+            }
+        }
+
+        public static void AddButtonColumn(this DataGridView grid, string columnName, string headerText, string buttonText, int position = 0)
+        {
+            if (!grid.Columns.Contains(columnName))
+            {
+                var buttonColumn = new DataGridViewButtonColumn
+                {
+                    Name = columnName,
+                    HeaderText = headerText,
+                    Text = buttonText,
+                    UseColumnTextForButtonValue = true,
+                    Width = 100,
+                    MinimumWidth = 100,
+                    ReadOnly = false,
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                };
+
+                if (position < 0 || position > grid.Columns.Count)
+                {
+                    position = 0;
+                }
+
+                grid.Columns.Insert(position, buttonColumn);
+            }
+        }
+
+        public static void AddImageColumn(this DataGridView grid, string columnName, string headerText, int position = 0)
+        {
+            if (!grid.Columns.Contains(columnName))
+            {
+                var imageColumn = new DataGridViewImageColumn
+                {
+                    Name = columnName,
+                    HeaderText = headerText,
+                    Width = 100,
+                    MinimumWidth = 100,
+                    ReadOnly = false,
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+                };
+
+                if (position < 0 || position > grid.Columns.Count)
+                {
+                    position = 0;
+                }
+
+                grid.Columns.Insert(position, imageColumn);
+            }
+        }
 
     /// <summary>
     /// 체크박스 컬럼의 선택 상태를 토글하는 메서드
@@ -428,13 +674,24 @@ public static class DataGridViewExtensions
 /// <summary>
 /// 컬럼 설정을 위한 클래스
 /// </summary>
+public enum ColumnType
+{
+    TextBox,
+    ComboBox,
+    Button,
+    CheckBox
+}
+
 public class DataGridViewColumnSetting
 {
     public string Name { get; set; }
     public string Title { get; set; }
     public int Width { get; set; }
     public ContentAlign ContentAlign { get; set; }
+    public ColumnType ColumnType { get; set; } = ColumnType.TextBox;
+    public List<string> ComboBoxItems { get; set; } // ComboBox의 경우 아이템 목록
 }
+
 
 /// <summary>
 /// 내용 정렬을 위한 열거형

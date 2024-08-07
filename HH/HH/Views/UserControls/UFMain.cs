@@ -40,11 +40,14 @@ namespace HH.Views
         private void InitializeDataGridView()
         {
             var columnSettings = new List<DataGridViewColumnSetting>
-            {
-                new DataGridViewColumnSetting { Name = "index", Title = "INDEX", Width = 120, ContentAlign = ContentAlign.Center },
-                new DataGridViewColumnSetting { Name = "title", Title = "TITLE", Width = 210, ContentAlign = ContentAlign.Left },
-                new DataGridViewColumnSetting { Name = "content", Title = "CONTENT", Width = 200, ContentAlign = ContentAlign.Right }
-            };
+{
+    new DataGridViewColumnSetting { Name = "index", Title = "INDEX", Width = 120, ContentAlign = ContentAlign.Center },
+    new DataGridViewColumnSetting { Name = "title", Title = "TITLE", Width = 210, ContentAlign = ContentAlign.Left },
+    new DataGridViewColumnSetting { Name = "content", Title = "CONTENT", Width = 200, ContentAlign = ContentAlign.Right },
+    new DataGridViewColumnSetting { Name = "ComboBox", Title = "COMBOBOX", Width = 150, ContentAlign = ContentAlign.Left, ColumnType = ColumnType.ComboBox, ComboBoxItems = new List<string> { "Option1", "Option2", "Option3" } },
+    new DataGridViewColumnSetting { Name = "Button", Title = "BUTTON", Width = 100, ContentAlign = ContentAlign.Center, ColumnType = ColumnType.Button },
+    new DataGridViewColumnSetting { Name = "CheckBox", Title = "CHECKBOX", Width = 60, ContentAlign = ContentAlign.Center, ColumnType = ColumnType.CheckBox }
+};
 
             poisonDataGridView1.SetCustomHeaders(columnSettings);
             ReadColumnWidths();
@@ -56,10 +59,17 @@ namespace HH.Views
                 people = DB.ExecuteList<TB_TEST_MODEL>("select * from TB_TEST");
             }
 
-            poisonDataGridView1.SetBindDataToHeaders(people);
+            poisonDataGridView1.SetBindDataToHeaders(people, 30);
+
+            // Allow editing for ComboBox columns
+            foreach (DataGridViewRow row in poisonDataGridView1.Rows)
+            {
+                row.Cells["ComboBox"].ReadOnly = false;
+            }
 
             poisonDataGridView1.ColumnWidthChanged += PoisonDataGridView1_ColumnWidthChanged;
         }
+        
 
         private void InitializeButtons()
         {
@@ -76,6 +86,7 @@ namespace HH.Views
             {
                 ("검색 하이라이트", materialButton1_Click),
                 ("셀 폰트 설정", materialButton4_Click),
+                ("콤보박스 컬럼 추가", materialButton13_Click),
                 ("체크된 행 보기", materialButton5_Click),
                 ("체크박스 토글", materialButton6_Click),
                 ("셀 색상 설정", materialButton7_Click),
@@ -84,7 +95,11 @@ namespace HH.Views
                 ("자동 컬럼 크기", materialButton10_Click),
                 ("자동 행 크기", materialButton11_Click),
                 ("체크박스 컬럼 추가", materialButton12_Click),
-                ("초기화", materialButtonReset_Click) 
+                ("초기화", materialButtonReset_Click),
+              
+                ("텍박스 컬럼 추가", materialButton14_Click),
+                ("버튼 컬럼 추가", materialButton15_Click),
+                ("이미지 컬럼 추가", materialButton16_Click)
             };
 
             foreach (var (text, handler) in buttons)
@@ -224,15 +239,37 @@ namespace HH.Views
         private void materialButton12_Click(object sender, EventArgs e)
         {
             // 체크박스 컬럼 추가
-
             poisonDataGridView1.ReadOnly = false;
+            poisonDataGridView1.AddCheckBoxColumn("CheckBoxColumn", " ", poisonDataGridView1.ColumnCount);
+        }
 
-            poisonDataGridView1.AddCheckBoxColumn("CheckBoxColumn", " ");
+        private void materialButton13_Click(object sender, EventArgs e)
+        {
+            // 콤보박스 컬럼 추가
+            poisonDataGridView1.AddComboBoxColumn("ComboBoxColumn", "Options", new List<string> { "Option1", "Option2", "Option3" }, poisonDataGridView1.ColumnCount);
+        }
+
+        private void materialButton14_Click(object sender, EventArgs e)
+        {
+            // 텍스트박스 컬럼 추가
+            poisonDataGridView1.AddTextBoxColumn("TextBoxColumn", "Text", poisonDataGridView1.ColumnCount);
+        }
+
+        private void materialButton15_Click(object sender, EventArgs e)
+        {
+            // 버튼 컬럼 추가
+            poisonDataGridView1.AddButtonColumn("ButtonColumn", "Action", "Click Me", poisonDataGridView1.ColumnCount);
+        }
+
+        private void materialButton16_Click(object sender, EventArgs e)
+        {
+            // 이미지 컬럼 추가
+            poisonDataGridView1.AddImageColumn("ImageColumn", "Image", poisonDataGridView1.ColumnCount);
         }
 
         private void materialButtonReset_Click(object sender, EventArgs e)
         {
-            ResetDataGridView(); 
+            ResetDataGridView();
             InitializeDataGridView();
         }
 
@@ -263,7 +300,7 @@ namespace HH.Views
                     var cell = grid[e.ColumnIndex, e.RowIndex] as DataGridViewCheckBoxCell;
                     if (cell != null)
                     {
-                        cell.Value = !(bool)(cell.Value ?? false); 
+                        cell.Value = !(bool)(cell.Value ?? false);
                     }
                 }
             }

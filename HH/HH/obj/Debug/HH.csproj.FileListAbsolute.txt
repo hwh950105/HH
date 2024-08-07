@@ -76,6 +76,6 @@ C:\Users\ghkdd\OneDrive\문서\HH\HH\HH\obj\Debug\HH.Views.UFmanu1.resources
 C:\Users\ghkdd\OneDrive\문서\HH\HH\HH\obj\Debug\HH.Views.UFTcpClient.resources
 C:\Users\ghkdd\OneDrive\문서\HH\HH\HH\obj\Debug\HH.csproj.GenerateResource.cache
 C:\Users\ghkdd\OneDrive\문서\HH\HH\HH\obj\Debug\HH.csproj.CoreCompileInputs.cache
-C:\Users\ghkdd\OneDrive\문서\HH\HH\HH\obj\Debug\HH.csproj.CopyComplete
 C:\Users\ghkdd\OneDrive\문서\HH\HH\HH\obj\Debug\HH.exe
 C:\Users\ghkdd\OneDrive\문서\HH\HH\HH\obj\Debug\HH.pdb
+C:\Users\ghkdd\OneDrive\문서\HH\HH\HH\obj\Debug\HH.csproj.Up2Date
