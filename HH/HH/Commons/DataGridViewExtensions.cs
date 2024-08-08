@@ -344,36 +344,19 @@ public static class DataGridViewExtensions
                         column.ReadOnly = false;
                     }
                 }
-            }
-        }
-    }
-
-    /// <summary>
-    /// 특정 값을 검색하고 해당 값을 포함하는 셀을 강조 표시하는 메서드
-    /// </summary>
-    public static void SearchAndHighlight(this DataGridView grid, string searchText, Color highlightColor)
-    {
-        if (grid == null || string.IsNullOrEmpty(searchText))
-        {
-            MessageBox.Show("그리드가 null이거나 검색어가 유효하지 않습니다.");
-            return;
-        }
-
-        foreach (DataGridViewRow row in grid.Rows)
-        {
-            foreach (DataGridViewCell cell in row.Cells)
-            {
-                if (cell.Value != null && cell.Value.ToString().Contains(searchText))
+                else if (setting.ColumnType == ColumnType.TextBox)
                 {
-                    cell.Style.BackColor = highlightColor;
-                }
-                else
-                {
-                    cell.Style.BackColor = Color.White;
+                    var column = grid.Columns[setting.Name];
+                    if (column != null)
+                    {
+                        column.ReadOnly = setting.ReadOnly;
+                    }
                 }
             }
         }
     }
+
+
 
     /// <summary>
     /// 특정 조건에 따라 행의 색상을 설정하는 메서드

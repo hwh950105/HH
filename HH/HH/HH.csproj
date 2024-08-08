@@ -93,6 +93,7 @@
   <ItemGroup>
     <Compile Include="Commons\DataGridViewExtensions.cs" />
     <Compile Include="Commons\DataGridViewExtensions2.cs" />
+    <Compile Include="Commons\DataGridViewExtensions3.cs" />
     <Compile Include="Commons\DbCall.cs" />
     <Compile Include="Commons\IniFile.cs" />
     <Compile Include="Commons\ListViewExtensions.cs" />

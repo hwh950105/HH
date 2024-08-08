@@ -66,9 +66,9 @@ namespace HH.Views
         {
             var columnSettings = new List<DataGridViewColumnSetting>
             {
-                new DataGridViewColumnSetting { Name = "index", Title = "INDEX", Width = 120, ContentAlign = ContentAlign.Center },
-                new DataGridViewColumnSetting { Name = "title", Title = "TITLE", Width = 210, ContentAlign = ContentAlign.Left },
-                new DataGridViewColumnSetting { Name = "content", Title = "CONTENT", Width = 200, ContentAlign = ContentAlign.Right },
+                new DataGridViewColumnSetting { Name = "index", Title = "INDEX", Width = 120, ContentAlign = ContentAlign.Center,ReadOnly = true },
+                new DataGridViewColumnSetting { Name = "title", Title = "TITLE", Width = 210, ContentAlign = ContentAlign.Left,ReadOnly = false  },
+                new DataGridViewColumnSetting { Name = "content", Title = "CONTENT", Width = 200, ContentAlign = ContentAlign.Right,ReadOnly = true  },
                 new DataGridViewColumnSetting { Name = "ComboBox", Title = "COMBOBOX", Width = 150, ContentAlign = ContentAlign.Left, ColumnType = ColumnType.ComboBox, ComboBoxItems = new List<string> { "Option1", "Option2", "Option3" } },
                 
                 new DataGridViewColumnSetting { Name = "CheckBox", Title = "CHECKBOX", Width = 60, ContentAlign = ContentAlign.Center, ColumnType = ColumnType.CheckBox },
@@ -86,8 +86,11 @@ namespace HH.Views
         
 
             }
+      
 
-            poisonDataGridView1.SetBindDataToHeaders(people, 30);
+
+
+        poisonDataGridView1.SetBindDataToHeaders(people, 30);
         }
         
 
