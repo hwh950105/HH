@@ -155,7 +155,7 @@ public static class DataGridViewExtensions
         foreach (var setting in columnSettings)
         {
             DataGridViewColumn column = null;
-
+      
             switch (setting.ColumnType)
             {
                 case ColumnType.TextBox:
@@ -165,7 +165,7 @@ public static class DataGridViewExtensions
                         HeaderText = setting.Title,
                         Width = setting.Width,
                         DataPropertyName = setting.Name,
-                        ReadOnly = false
+                        ReadOnly = setting.ReadOnly
                     };
                     break;
 
@@ -176,7 +176,7 @@ public static class DataGridViewExtensions
                         HeaderText = setting.Title,
                         Width = setting.Width,
                         DataPropertyName = setting.Name,
-                        ReadOnly = false
+                        ReadOnly = setting.ReadOnly
                     };
 
                     if (setting.ComboBoxItems != null)
@@ -196,7 +196,7 @@ public static class DataGridViewExtensions
                         DataPropertyName = setting.Name,
                         Text = "Click",
                         UseColumnTextForButtonValue = true,
-                        ReadOnly = false
+                        ReadOnly = setting.ReadOnly
                     };
                     break;
 
@@ -207,7 +207,7 @@ public static class DataGridViewExtensions
                         HeaderText = setting.Title,
                         Width = setting.Width,
                         DataPropertyName = setting.Name,
-                        ReadOnly = false
+                        ReadOnly = setting.ReadOnly
                     };
                     break;
 
@@ -218,7 +218,7 @@ public static class DataGridViewExtensions
                         HeaderText = setting.Title,
                         Width = setting.Width,
                         DataPropertyName = setting.Name,
-                        ReadOnly = true
+                        ReadOnly = setting.ReadOnly
                     };
                     break;
             }
@@ -245,6 +245,7 @@ public static class DataGridViewExtensions
 
         grid.AutoGenerateColumns = false; // 자동 생성된 컬럼 비활성화
     }
+
 
     /// <summary>
     /// List<T>를 받아서 그리드에 데이터를 바인딩하는 확장 메서드
@@ -297,18 +298,10 @@ public static class DataGridViewExtensions
 
         if (data == null)
         {
-            MessageBox.Show("데이터가 null입니다.");
             data = new List<T>();
         }
 
-        var columnSettings = grid.Tag as List<DataGridViewColumnSetting>;
-        if (columnSettings == null)
-        {
-            MessageBox.Show("컬럼 설정이 null입니다.");
-            return;
-        }
-
-        // 데이터를 바인딩
+        // 데이터 바인딩 전 빈 행 추가
         BindingList<T> bindingList = new BindingList<T>(data);
         BindingSource bindingSource = new BindingSource
         {
@@ -316,6 +309,17 @@ public static class DataGridViewExtensions
         };
 
         grid.DataSource = bindingSource;
+
+        // 기본 설정
+        grid.ReadOnly = false;
+        grid.AllowUserToAddRows = false;
+        grid.AllowUserToDeleteRows = false;
+        grid.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+
+        grid.Dock = DockStyle.Fill;
+        grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        grid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+        grid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 
         // 빈 행 추가
         if (rowCount > data.Count)
@@ -326,28 +330,20 @@ public static class DataGridViewExtensions
             }
         }
 
-        // 기본 설정
-        grid.AllowUserToAddRows = false;
-        grid.AllowUserToDeleteRows = false;
-        grid.EditMode = DataGridViewEditMode.EditOnEnter;
-
-        grid.Dock = DockStyle.Fill;
-        grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        grid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-        grid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-
-        // 컬럼 타입에 따라 ReadOnly 설정
-        foreach (DataGridViewColumn column in grid.Columns)
+        // 그리드에 설정된 커스텀 헤더가 있는 경우, ReadOnly 속성을 false로 설정
+        var columnSettings = grid.Tag as List<DataGridViewColumnSetting>;
+        if (columnSettings != null)
         {
-            var setting = columnSettings.FirstOrDefault(s => s.Name == column.Name);
-            if (setting != null && ( setting.ColumnType == ColumnType.ComboBox ||
-                                    setting.ColumnType == ColumnType.Button || setting.ColumnType == ColumnType.CheckBox))
+            foreach (var setting in columnSettings)
             {
-                column.ReadOnly = false;
-            }
-            else
-            {
-                column.ReadOnly = true;
+                if (setting.ColumnType != ColumnType.TextBox)
+                {
+                    var column = grid.Columns[setting.Name];
+                    if (column != null)
+                    {
+                        column.ReadOnly = false;
+                    }
+                }
             }
         }
     }
@@ -643,6 +639,7 @@ public static class DataGridViewExtensions
             {
                 checkBoxCell.Value = !(bool)(checkBoxCell.Value ?? false);
             }
+           
         }
     }
 
@@ -689,8 +686,9 @@ public class DataGridViewColumnSetting
     public string Title { get; set; }
     public int Width { get; set; }
     public ContentAlign ContentAlign { get; set; }
-    public ColumnType ColumnType { get; set; } = ColumnType.TextBox;
-    public List<string> ComboBoxItems { get; set; } // ComboBox의 경우 아이템 목록
+    public ColumnType ColumnType { get; set; } = ColumnType.TextBox; // 기본값 설정
+    public List<string> ComboBoxItems { get; set; } // ComboBox 아이템 목록
+    public bool ReadOnly { get; set; } // ReadOnly 속성 추가 기본값 false
 }
 
 

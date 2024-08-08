@@ -107,10 +107,10 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
-            this.panel3.Location = new System.Drawing.Point(3, 392);
+            this.panel3.Location = new System.Drawing.Point(3, 393);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5);
-            this.panel3.Size = new System.Drawing.Size(734, 78);
+            this.panel3.Size = new System.Drawing.Size(734, 77);
             this.panel3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.panel3.TabIndex = 3;
             this.panel3.Text = "panel3";
@@ -122,9 +122,10 @@
             this.poisonDataGridView1.Location = new System.Drawing.Point(3, 3);
             this.poisonDataGridView1.Name = "poisonDataGridView1";
             this.poisonDataGridView1.RowTemplate.Height = 23;
-            this.poisonDataGridView1.Size = new System.Drawing.Size(734, 383);
+            this.poisonDataGridView1.Size = new System.Drawing.Size(734, 384);
             this.poisonDataGridView1.TabIndex = 4;
             this.poisonDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.poisonDataGridView1_CellClick);
+            this.poisonDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.poisonDataGridView1_CellContentClick);
             // 
             // UFMain
             // 

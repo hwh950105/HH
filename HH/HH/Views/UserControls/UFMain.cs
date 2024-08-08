@@ -26,6 +26,31 @@ namespace HH.Views
             public int index { get; set; }
             public string title { get; set; }
             public string content { get; set; }
+
+            public string ComboBox { get; set; }
+        
+
+            private string _checkBoxValue;
+            public string checkBoxValue // DB 에서 찐데이터
+            {
+                get { return _checkBoxValue; }
+                set
+                {
+                    _checkBoxValue = value;
+                    CheckBox = _checkBoxValue == "1";
+                }
+            }
+
+            private bool _checkBox;
+            public bool CheckBox
+            {
+                get { return _checkBox; }
+                set
+                {
+                    _checkBox = value; //DB 에서 온값 0 false
+                    _checkBoxValue = _checkBox ? "1" : "0";
+                }
+            }
         }
 
         public UFMain(FmMain main)
@@ -40,34 +65,29 @@ namespace HH.Views
         private void InitializeDataGridView()
         {
             var columnSettings = new List<DataGridViewColumnSetting>
-{
-    new DataGridViewColumnSetting { Name = "index", Title = "INDEX", Width = 120, ContentAlign = ContentAlign.Center },
-    new DataGridViewColumnSetting { Name = "title", Title = "TITLE", Width = 210, ContentAlign = ContentAlign.Left },
-    new DataGridViewColumnSetting { Name = "content", Title = "CONTENT", Width = 200, ContentAlign = ContentAlign.Right },
-    new DataGridViewColumnSetting { Name = "ComboBox", Title = "COMBOBOX", Width = 150, ContentAlign = ContentAlign.Left, ColumnType = ColumnType.ComboBox, ComboBoxItems = new List<string> { "Option1", "Option2", "Option3" } },
-    new DataGridViewColumnSetting { Name = "Button", Title = "BUTTON", Width = 100, ContentAlign = ContentAlign.Center, ColumnType = ColumnType.Button },
-    new DataGridViewColumnSetting { Name = "CheckBox", Title = "CHECKBOX", Width = 60, ContentAlign = ContentAlign.Center, ColumnType = ColumnType.CheckBox }
-};
+            {
+                new DataGridViewColumnSetting { Name = "index", Title = "INDEX", Width = 120, ContentAlign = ContentAlign.Center },
+                new DataGridViewColumnSetting { Name = "title", Title = "TITLE", Width = 210, ContentAlign = ContentAlign.Left },
+                new DataGridViewColumnSetting { Name = "content", Title = "CONTENT", Width = 200, ContentAlign = ContentAlign.Right },
+                new DataGridViewColumnSetting { Name = "ComboBox", Title = "COMBOBOX", Width = 150, ContentAlign = ContentAlign.Left, ColumnType = ColumnType.ComboBox, ComboBoxItems = new List<string> { "Option1", "Option2", "Option3" } },
+                
+                new DataGridViewColumnSetting { Name = "CheckBox", Title = "CHECKBOX", Width = 60, ContentAlign = ContentAlign.Center, ColumnType = ColumnType.CheckBox },
+                new DataGridViewColumnSetting { Name = "Button", Title = "BUTTON", Width = 100, ContentAlign = ContentAlign.Center, ColumnType = ColumnType.Button }
+            };
 
             poisonDataGridView1.SetCustomHeaders(columnSettings);
-            ReadColumnWidths();
 
             var people = new List<TB_TEST_MODEL>();
 
             using (SQLiteDbHelper DB = new SQLiteDbHelper())
             {
                 people = DB.ExecuteList<TB_TEST_MODEL>("select * from TB_TEST");
+
+        
+
             }
 
             poisonDataGridView1.SetBindDataToHeaders(people, 30);
-
-            // Allow editing for ComboBox columns
-            foreach (DataGridViewRow row in poisonDataGridView1.Rows)
-            {
-                row.Cells["ComboBox"].ReadOnly = false;
-            }
-
-            poisonDataGridView1.ColumnWidthChanged += PoisonDataGridView1_ColumnWidthChanged;
         }
         
 
@@ -96,7 +116,6 @@ namespace HH.Views
                 ("자동 행 크기", materialButton11_Click),
                 ("체크박스 컬럼 추가", materialButton12_Click),
                 ("초기화", materialButtonReset_Click),
-              
                 ("텍박스 컬럼 추가", materialButton14_Click),
                 ("버튼 컬럼 추가", materialButton15_Click),
                 ("이미지 컬럼 추가", materialButton16_Click)
@@ -320,6 +339,29 @@ namespace HH.Views
             }
         }
 
+        private void poisonDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 버튼 컬럼의 인덱스 또는 이름을 확인하여 버튼 클릭을 감지
+            if (e.RowIndex >= 0 && poisonDataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                // 클릭된 버튼 컬럼의 이름을 가져옴
+                var columnName = poisonDataGridView1.Columns[e.ColumnIndex].Name;
+
+                // 예시: 특정 버튼 컬럼이 클릭되었을 때 처리할 작업
+                if (columnName == "Button")
+                {
+                    var rowData = poisonDataGridView1.Rows[e.RowIndex].DataBoundItem as TB_TEST_MODEL;
+                    if (rowData != null)
+                    {
+                        using (SQLiteDbHelper db = new SQLiteDbHelper())
+                        {
+                            db.ExecuteNonQuery($"update TB_TEST set ComboBox = '{rowData.ComboBox}', CheckBox = '{rowData.checkBoxValue}' where [index] = '{rowData.index}'");
+                        }
+                    }
+                }
+
+            }
+        }
 
     }
 }

@@ -10,3 +10,9 @@ C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\TCPHH\TCPHH\obj\Debug
 C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\TCPHH\TCPHH\obj\Debug\TCPHH.csproj.CoreCompileInputs.cache
 C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\TCPHH\TCPHH\obj\Debug\TCPHH.dll
 C:\Users\ghkdd\OneDrive\바탕 화면\개발\새 폴더\HH\TCPHH\TCPHH\obj\Debug\TCPHH.pdb
+C:\Users\ghkdd\OneDrive\문서\HH\HH\TCPHH\TCPHH\bin\Debug\TCPHH.dll
+C:\Users\ghkdd\OneDrive\문서\HH\HH\TCPHH\TCPHH\bin\Debug\TCPHH.pdb
+C:\Users\ghkdd\OneDrive\문서\HH\HH\TCPHH\TCPHH\obj\Debug\TCPHH.csproj.AssemblyReference.cache
+C:\Users\ghkdd\OneDrive\문서\HH\HH\TCPHH\TCPHH\obj\Debug\TCPHH.csproj.CoreCompileInputs.cache
+C:\Users\ghkdd\OneDrive\문서\HH\HH\TCPHH\TCPHH\obj\Debug\TCPHH.dll
+C:\Users\ghkdd\OneDrive\문서\HH\HH\TCPHH\TCPHH\obj\Debug\TCPHH.pdb
