@@ -91,62 +91,78 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commons\Extensions.cs" />
     <Compile Include="Commons\DataGridViewExtensions.cs" />
     <Compile Include="Commons\DataGridViewExtensions2.cs" />
     <Compile Include="Commons\DataGridViewExtensions3.cs" />
     <Compile Include="Commons\DbCall.cs" />
     <Compile Include="Commons\IniFile.cs" />
     <Compile Include="Commons\ListViewExtensions.cs" />
+    <Compile Include="Component\HHgirdView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Component\HHgirdView.Designer.cs">
+      <DependentUpon>HHgirdView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Helpers\SecurityHelper.cs" />
     <Compile Include="Helpers\SQLiteDbHelper.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Views\FmLogin.cs">
+    <Compile Include="UI\FmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FmLogin.Designer.cs">
+    <Compile Include="UI\FmLogin.Designer.cs">
       <DependentUpon>FmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\FmMain.cs">
+    <Compile Include="UI\FmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FmMain.Designer.cs">
+    <Compile Include="UI\FmMain.Designer.cs">
       <DependentUpon>FmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FmMainController.cs" />
-    <Compile Include="Views\UserControls\UFiniConfig.cs">
+    <Compile Include="UI\FmMainController.cs" />
+    <Compile Include="UI\UserControls\UCTreeView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UserControls\UFiniConfig.Designer.cs">
-      <DependentUpon>UFiniConfig.cs</DependentUpon>
+    <Compile Include="UI\UserControls\UCTreeView.Designer.cs">
+      <DependentUpon>UCTreeView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControls\UFJsonConfig.cs">
+    <Compile Include="UI\UserControls\UCiniConfig.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UserControls\UFJsonConfig.Designer.cs">
-      <DependentUpon>UFJsonConfig.cs</DependentUpon>
+    <Compile Include="UI\UserControls\UCiniConfig.Designer.cs">
+      <DependentUpon>UCiniConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControls\UFTcpClient.cs">
+    <Compile Include="UI\UserControls\UCJsonConfig.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UserControls\UFTcpClient.Designer.cs">
-      <DependentUpon>UFTcpClient.cs</DependentUpon>
+    <Compile Include="UI\UserControls\UCJsonConfig.Designer.cs">
+      <DependentUpon>UCJsonConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControls\UFMain.cs">
+    <Compile Include="UI\UserControls\UCTcpClient.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UserControls\UFMain.Designer.cs">
-      <DependentUpon>UFMain.cs</DependentUpon>
+    <Compile Include="UI\UserControls\UCTcpClient.Designer.cs">
+      <DependentUpon>UCTcpClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControls\UFmanu1.cs">
+    <Compile Include="UI\UserControls\UCMain.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UserControls\UFmanu1.Designer.cs">
-      <DependentUpon>UFmanu1.cs</DependentUpon>
+    <Compile Include="UI\UserControls\UCMain.Designer.cs">
+      <DependentUpon>UCMain.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\FmLogin.resx">
+    <Compile Include="UI\UserControls\UCmanu1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControls\UCmanu1.Designer.cs">
+      <DependentUpon>UCmanu1.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Component\HHgirdView.resx">
+      <DependentUpon>HHgirdView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmLogin.resx">
       <DependentUpon>FmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -159,27 +175,30 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\FmMain.resx">
+    <EmbeddedResource Include="UI\FmMain.resx">
       <DependentUpon>FmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserControls\UFiniConfig.resx">
-      <DependentUpon>UFiniConfig.cs</DependentUpon>
+    <EmbeddedResource Include="UI\UserControls\UCiniConfig.resx">
+      <DependentUpon>UCiniConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserControls\UFJsonConfig.resx">
-      <DependentUpon>UFJsonConfig.cs</DependentUpon>
+    <EmbeddedResource Include="UI\UserControls\UCJsonConfig.resx">
+      <DependentUpon>UCJsonConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserControls\UFMain.resx">
-      <DependentUpon>UFMain.cs</DependentUpon>
+    <EmbeddedResource Include="UI\UserControls\UCMain.resx">
+      <DependentUpon>UCMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserControls\UFmanu1.resx">
-      <DependentUpon>UFmanu1.cs</DependentUpon>
+    <EmbeddedResource Include="UI\UserControls\UCmanu1.resx">
+      <DependentUpon>UCmanu1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserControls\UFTcpClient.resx">
-      <DependentUpon>UFTcpClient.cs</DependentUpon>
+    <EmbeddedResource Include="UI\UserControls\UCTcpClient.resx">
+      <DependentUpon>UCTcpClient.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="UI\UserControls\UCTreeView.resx">
+      <DependentUpon>UCTreeView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">

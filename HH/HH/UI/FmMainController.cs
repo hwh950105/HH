@@ -11,10 +11,10 @@ namespace HH.Views
 {
     public class FmMainController
     {
-        private readonly UFMain uFMain;
+        private readonly UCMain uFMain;
         private readonly UserRepository _repository;
 
-        public FmMainController(UFMain view)
+        public FmMainController(UCMain view)
         {
             uFMain = view;
             _repository = new UserRepository();

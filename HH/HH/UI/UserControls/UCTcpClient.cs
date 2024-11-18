@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace HH.Views
 {
-    public partial class UFTcpClient : UserControl
+    public partial class UCTcpClient : UserControl
     {
-        public UFTcpClient()
+        public UCTcpClient()
         {
             InitializeComponent();
             InitializeListView();

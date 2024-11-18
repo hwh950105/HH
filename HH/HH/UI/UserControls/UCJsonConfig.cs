@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace HH.Views.UserControls
 {
-    public partial class UFJsonConfig : UserControl
+    public partial class UCJsonConfig : UserControl
     {
 
         private const string ConfigFilePath = "jsonconfig.json";
         private ConfigModel configModel;
 
 
-        public UFJsonConfig()
+        public UCJsonConfig()
         {
             InitializeComponent(); 
             LoadConfig();

@@ -12,9 +12,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HH.Views
 {
-    public partial class UFmanu1 : UserControl
+    public partial class UCmanu1 : UserControl
     {
-        public UFmanu1()
+        public UCmanu1()
         {
             InitializeComponent();
             InitializeListView();

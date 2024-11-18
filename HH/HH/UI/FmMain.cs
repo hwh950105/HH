@@ -30,10 +30,10 @@ namespace HH.Views
             userControls = new Dictionary<Type, UserControl>();
 
             // UFMain 초기화 및 설정
-            UFMain ufMain = new UFMain(this);
+            UCMain ufMain = new UCMain(this);
             ufMain.Dock = DockStyle.Fill;
             panel2.Controls.Add(ufMain);
-            userControls[typeof(UFMain)] = ufMain;
+            userControls[typeof(UCMain)] = ufMain;
 
             // 초기에는 UFMain만 표시
             ufMain.Visible = true;
@@ -72,34 +72,34 @@ namespace HH.Views
 
         private void Btmainview_Click(object sender, EventArgs e)
         {
-            LoadContent(typeof(UFMain));
+            LoadContent(typeof(UCMain));
         }
 
 
         private void Btview1_Click(object sender, EventArgs e)
         {
-            LoadContent(typeof(UFmanu1));
+            LoadContent(typeof(UCmanu1));
 
         }
 
         private void Btview2_Click(object sender, EventArgs e)
         {
-            LoadContent(typeof(UFTcpClient));
+            LoadContent(typeof(UCTcpClient));
         }
 
         private void Btview3_Click(object sender, EventArgs e)
         {
-            LoadContent(typeof(UFJsonConfig));
+            LoadContent(typeof(UCJsonConfig));
         }
 
         private void materialButton1_Click(object sender, EventArgs e)
         {
-            LoadContent(typeof(UFiniConfig));
+            LoadContent(typeof(UCiniConfig));
         }
 
         private void materialButton2_Click(object sender, EventArgs e)
         {
-
+            LoadContent(typeof(UCTreeView));
         }
 
         private void materialButton3_Click(object sender, EventArgs e)

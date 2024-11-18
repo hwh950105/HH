@@ -7,14 +7,14 @@ using System.Windows.Forms;
 
 namespace HH.Views.UserControls
 {
-    public partial class UFiniConfig : UserControl
+    public partial class UCiniConfig : UserControl
     {
         // 상대 경로를 절대 경로로 변환하여 사용
         private string ConfigIniFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.ini");
         private IniFile iniFile;
         private NotifyIcon notifyIcon;
 
-        public UFiniConfig()
+        public UCiniConfig()
         {
             InitializeComponent();
 

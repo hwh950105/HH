@@ -1,6 +1,6 @@
 ﻿namespace HH.Views.UserControls
 {
-    partial class UFiniConfig
+    partial class UCiniConfig
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.
